@@ -14,6 +14,7 @@
 		21D787C81B4A1182005AC775 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D787C71B4A1182005AC775 /* Images.xcassets */; };
 		21D787CB1B4A1182005AC775 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D787C91B4A1182005AC775 /* LaunchScreen.xib */; };
 		21D787D71B4A1182005AC775 /* YQItemCellDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D787D61B4A1182005AC775 /* YQItemCellDemoTests.m */; };
+		21D787E61B4A1BCF005AC775 /* YQSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D787E51B4A1BCF005AC775 /* YQSectionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		21D787D01B4A1182005AC775 /* YQItemCellDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YQItemCellDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D787D51B4A1182005AC775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21D787D61B4A1182005AC775 /* YQItemCellDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQItemCellDemoTests.m; sourceTree = "<group>"; };
+		21D787E41B4A1BCF005AC775 /* YQSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQSectionView.h; sourceTree = "<group>"; };
+		21D787E51B4A1BCF005AC775 /* YQSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQSectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,7 @@
 		21D787B91B4A1182005AC775 /* YQItemCellDemo */ = {
 			isa = PBXGroup;
 			children = (
+				21D787E01B4A11CA005AC775 /* YQItemCell */,
 				21D787BE1B4A1182005AC775 /* AppDelegate.h */,
 				21D787BF1B4A1182005AC775 /* AppDelegate.m */,
 				21D787C11B4A1182005AC775 /* ViewController.h */,
@@ -117,6 +121,15 @@
 				21D787D51B4A1182005AC775 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		21D787E01B4A11CA005AC775 /* YQItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				21D787E41B4A1BCF005AC775 /* YQSectionView.h */,
+				21D787E51B4A1BCF005AC775 /* YQSectionView.m */,
+			);
+			path = YQItemCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21D787E61B4A1BCF005AC775 /* YQSectionView.m in Sources */,
 				21D787C31B4A1182005AC775 /* ViewController.m in Sources */,
 				21D787C01B4A1182005AC775 /* AppDelegate.m in Sources */,
 				21D787BD1B4A1182005AC775 /* main.m in Sources */,
@@ -348,6 +362,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YQItemCellDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -358,6 +373,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YQItemCellDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
