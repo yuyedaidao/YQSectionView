@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "YQSectionView.h"
 @interface ViewController ()
 
 @end
@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    YQSectionView *section = [[YQSectionView alloc] initWithItemCount:5];
+    [self.view addSubview:section];
+    section.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
+    section.frame = CGRectMake(0, 100, 200, 500);
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YQItemCell.h"
+#import "YQItemCell.h"
 
 @interface YQSectionView : UIView
-- (instancetype)initWithFrame:(CGRect)frame itemCount:(NSInteger)count;
+- (instancetype)initWithItemCount:(NSInteger)count;
 
-@property (nonatomic, assign) IBInspectable  NSInteger itemCount;
 @property (nonatomic, assign) UIEdgeInsets separatorInset;
-
-- (CGFloat)originYAtIndex:(NSInteger)index;
+- (YQItemCell *)cellAtIndex:(NSInteger)index;
+@property (nonatomic,copy) void (^didClickBlock)(NSInteger index);
 @end

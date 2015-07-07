@@ -1,19 +1,19 @@
 //
-//  YQItemCellDemoTests.m
-//  YQItemCellDemoTests
+//  YQSectionViewDemo_Tests.m
+//  YQSectionViewDemo Tests
 //
-//  Created by Wang on 15/7/6.
+//  Created by Wang on 15/7/7.
 //  Copyright (c) 2015年 Wang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface YQItemCellDemoTests : XCTestCase
+@interface YQSectionViewDemo_Tests : XCTestCase
 
 @end
 
-@implementation YQItemCellDemoTests
+@implementation YQSectionViewDemo_Tests
 
 - (void)setUp {
     [super setUp];

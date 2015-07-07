@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "21D787B61B4A1182005AC775"
-               BuildableName = "YQItemCellDemo.app"
-               BlueprintName = "YQItemCellDemo"
-               ReferencedContainer = "container:YQItemCellDemo.xcodeproj">
+               BuildableName = "YQSectionViewDemo.app"
+               BlueprintName = "YQSectionViewDemo"
+               ReferencedContainer = "container:YQSectionViewDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,23 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "21D787CF1B4A1182005AC775"
-               BuildableName = "YQItemCellDemoTests.xctest"
-               BlueprintName = "YQItemCellDemoTests"
-               ReferencedContainer = "container:YQItemCellDemo.xcodeproj">
+               BuildableName = "YQSectionViewDemoTests.xctest"
+               BlueprintName = "YQSectionViewDemoTests"
+               ReferencedContainer = "container:YQSectionViewDemo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "21DD0C4C1B4B6DC900312470"
+               BuildableName = "YQSectionViewDemo Tests.xctest"
+               BlueprintName = "YQSectionViewDemo Tests"
+               ReferencedContainer = "container:YQSectionViewDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +61,19 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "21D787CF1B4A1182005AC775"
-               BuildableName = "YQItemCellDemoTests.xctest"
-               BlueprintName = "YQItemCellDemoTests"
-               ReferencedContainer = "container:YQItemCellDemo.xcodeproj">
+               BuildableName = "YQSectionViewDemoTests.xctest"
+               BlueprintName = "YQSectionViewDemoTests"
+               ReferencedContainer = "container:YQSectionViewDemo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "21DD0C4C1B4B6DC900312470"
+               BuildableName = "YQSectionViewDemo Tests.xctest"
+               BlueprintName = "YQSectionViewDemo Tests"
+               ReferencedContainer = "container:YQSectionViewDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +81,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21D787B61B4A1182005AC775"
-            BuildableName = "YQItemCellDemo.app"
-            BlueprintName = "YQItemCellDemo"
-            ReferencedContainer = "container:YQItemCellDemo.xcodeproj">
+            BuildableName = "YQSectionViewDemo.app"
+            BlueprintName = "YQSectionViewDemo"
+            ReferencedContainer = "container:YQSectionViewDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +101,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21D787B61B4A1182005AC775"
-            BuildableName = "YQItemCellDemo.app"
-            BlueprintName = "YQItemCellDemo"
-            ReferencedContainer = "container:YQItemCellDemo.xcodeproj">
+            BuildableName = "YQSectionViewDemo.app"
+            BlueprintName = "YQSectionViewDemo"
+            ReferencedContainer = "container:YQSectionViewDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +120,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21D787B61B4A1182005AC775"
-            BuildableName = "YQItemCellDemo.app"
-            BlueprintName = "YQItemCellDemo"
-            ReferencedContainer = "container:YQItemCellDemo.xcodeproj">
+            BuildableName = "YQSectionViewDemo.app"
+            BlueprintName = "YQSectionViewDemo"
+            ReferencedContainer = "container:YQSectionViewDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
