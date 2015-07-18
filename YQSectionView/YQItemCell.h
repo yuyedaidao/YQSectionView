@@ -15,7 +15,12 @@ typedef NS_ENUM(NSUInteger, YQItemCellType) {
 };
 
 @interface YQItemCell : UIView
-- (instancetype)initWithIndex:(NSInteger)index type:(YQItemCellType)type;
+- (instancetype)initWithIndex:(NSInteger)index type:(YQItemCellType)type separatorInset:(UIEdgeInsets)separatorInset isOnly:(BOOL)only;
+- (instancetype)initWithIndex:(NSInteger)index type:(YQItemCellType)type separatorInset:(UIEdgeInsets)separatorInset;
 @property (nonatomic, assign) NSInteger index;
-@property (nonatomic, assign) UIEdgeInsets separatorInset;
+
+/**
+ *  是否显示箭头
+ */
+@property (nonatomic, assign) BOOL accessory;
 @end

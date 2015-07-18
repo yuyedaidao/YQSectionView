@@ -7,60 +7,93 @@
 //
 
 #import "YQItemCell.h"
+#import <UIKit/UIKit.h>
 #define SINGLE_LINE_WIDTH           (1 / [UIScreen mainScreen].scale)
 #define SINGLE_LINE_ADJUST_OFFSET   ((1 / [UIScreen mainScreen].scale) / 2)
 
 
 
+static CGFloat AccessoryTrailing = 15;
+static CGFloat AccessoryWidth = 6;
 @interface YQItemCell ()
 @property (nonatomic, assign) CGFloat lineWidth;
-
 @property (nonatomic, assign) YQItemCellType type;
- 
+@property (nonatomic, assign) IBInspectable UIEdgeInsets separatorInset;
+@property (nonatomic, assign,getter=isOnly) IBInspectable BOOL only;
 @end
 
 @implementation YQItemCell
-- (instancetype)initWithIndex:(NSInteger)index type:(YQItemCellType)type{
+- (instancetype)initWithIndex:(NSInteger)index type:(YQItemCellType)type separatorInset:(UIEdgeInsets)separatorInset{
+    return [self initWithIndex:index type:type separatorInset:separatorInset isOnly:NO];
+}
+- (instancetype)initWithIndex:(NSInteger)index type:(YQItemCellType)type separatorInset:(UIEdgeInsets)separatorInset isOnly:(BOOL)only{
     if(self = [super init]){
         _index = index;
         _type = type;
         _lineWidth = SINGLE_LINE_WIDTH;
+        _only = only;
+        _separatorInset = separatorInset;
         self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
-
+- (void)awakeFromNib{
+    self.type = YQItemCellTypeLast;
+    self.index = 0;
+    self.lineWidth = SINGLE_LINE_WIDTH;
+    self.separatorInset = UIEdgeInsetsZero;
+    self.backgroundColor = [UIColor whiteColor];
+}
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextBeginPath(context);
-    CGFloat originYOffset = 0;
-    CGFloat originX = 0;
-    CGFloat originXOffset = 0;
+    [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1] setStroke];
+    CGFloat left = 0;
+    CGFloat right = 0;
+    CGFloat top = 0;
+    CGFloat bottom = 0;
+    
     if(self.type == YQItemCellTypeMiddle){
-        originX = self.separatorInset.left;
-        originXOffset = self.separatorInset.right;
+        left = self.separatorInset.left;
+        right = self.separatorInset.right;
     }else if(self.type == YQItemCellTypeFirst){
-        originYOffset = self.separatorInset.top;
+        top = self.separatorInset.top;
+        bottom = self.separatorInset.bottom;//只有在第一个是最后一个的时候用到
     }else{
-        originYOffset = self.separatorInset.bottom;
+        left = self.separatorInset.left;
+        bottom = self.separatorInset.bottom;
     }
-    CGContextMoveToPoint(context, originX, SINGLE_LINE_ADJUST_OFFSET+originYOffset);
-    CGContextAddLineToPoint(context, CGRectGetWidth(rect)-originXOffset, SINGLE_LINE_ADJUST_OFFSET+originYOffset);
-    if(self.type == YQItemCellTypeLast){
-        CGContextMoveToPoint(context, originX, CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-originYOffset);
-        CGContextAddLineToPoint(context, CGRectGetWidth(rect), CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-originYOffset);
+    CGContextMoveToPoint(context, left, SINGLE_LINE_ADJUST_OFFSET+top);
+    CGContextAddLineToPoint(context, CGRectGetWidth(rect)-right, SINGLE_LINE_ADJUST_OFFSET+top);
+    if(self.type == YQItemCellTypeLast || self.isOnly){
+        CGContextMoveToPoint(context, 0, CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-bottom);
+        CGContextAddLineToPoint(context, CGRectGetWidth(rect), CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-bottom);
     }
     CGContextSetLineWidth(context, self.lineWidth);
-    [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1] setStroke];
     CGContextStrokePath(context);
+    
+    if(self.accessory){
+        CGContextMoveToPoint(context, CGRectGetWidth(rect)-AccessoryTrailing-AccessoryWidth, CGRectGetHeight(rect)/2-AccessoryWidth);
+        CGContextAddLineToPoint(context, CGRectGetWidth(rect)-AccessoryTrailing, CGRectGetHeight(rect)/2);
+        CGContextAddLineToPoint(context, CGRectGetWidth(rect)-AccessoryTrailing-AccessoryWidth, CGRectGetHeight(rect)/2+AccessoryWidth);
+        CGContextSetLineWidth(context, 2);
+    }
+    CGContextStrokePath(context);
+    
+    
 }
-
-- (void)setSeparatorInset:(UIEdgeInsets)separatorInset{
-    _separatorInset = separatorInset;
-    [self layoutIfNeeded];
+-(void)setAccessory:(BOOL)accessory{
+    
+    _accessory = accessory;
+    if(accessory){
+        self.layoutMargins = UIEdgeInsetsMake(0, 0, 0, AccessoryTrailing-5);
+    }else{
+        self.layoutMargins = UIEdgeInsetsZero;
+    }
+    [self setNeedsDisplay];
 }
 
 @end

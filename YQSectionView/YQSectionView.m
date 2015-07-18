@@ -34,29 +34,39 @@
 
 - (void)awakeFromNib{
 
-//    self.originYArray = [NSMutableArray array];
+    //    self.originYArray = [NSMutableArray array];
     self.itemArray = [NSMutableArray arrayWithCapacity:self.itemCount];
-    for (int i = 0; i< self.itemCount; i++) {
-//        [self.originYArray addObject:@(round(height*i))];
-        YQItemCell *cell = nil;
-        if(i == 0){
-            cell = [[YQItemCell alloc] initWithIndex:i type:YQItemCellTypeFirst];
-        }else if(i == self.itemCount-1){
-            cell = [[YQItemCell alloc] initWithIndex:i type:YQItemCellTypeLast];
-        }else{
-            cell = [[YQItemCell alloc] initWithIndex:i type:YQItemCellTypeMiddle];
-        }
+    YQItemCell *cell = nil;
+    if(self.itemCount == 1){
+        cell = [[YQItemCell alloc] initWithIndex:0 type:YQItemCellTypeFirst separatorInset:self.separatorInset isOnly:YES];
+        
         [self addSubview:cell];
         [self.itemArray addObject:cell];
-        
         //加点击手势
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchAction:)];
         [cell addGestureRecognizer:tap];
+    }else{
+        for (int i = 0; i < self.itemCount; i++) {
+            if(i == 0){
+                cell = [[YQItemCell alloc] initWithIndex:i type:YQItemCellTypeFirst separatorInset:self.separatorInset];
+            }else if(i == self.itemCount-1){
+                cell = [[YQItemCell alloc] initWithIndex:i type:YQItemCellTypeLast separatorInset:self.separatorInset];
+            }else{
+                cell = [[YQItemCell alloc] initWithIndex:i type:YQItemCellTypeMiddle separatorInset:self.separatorInset];
+            }
+            
+            
+            [self.itemArray addObject:cell];
+            [self addSubview:cell];
+            
+            //加点击手势
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchAction:)];
+            [cell addGestureRecognizer:tap];
+        }
     }
     [self.itemArray enumerateObjectsUsingBlock:^(YQItemCell *obj, NSUInteger idx, BOOL *stop) {
-    
-        [obj setTranslatesAutoresizingMaskIntoConstraints:NO];
         
+        [obj setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1 constant:0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1 constant:0]];
         if(idx == 0){
@@ -76,13 +86,17 @@
         
     }];
 }
-- (void)setSeparatorInset:(UIEdgeInsets)separatorInset{
-    _separatorInset = separatorInset;
-    [self.itemArray enumerateObjectsUsingBlock:^(YQItemCell *obj, NSUInteger idx, BOOL *stop) {
-        obj.separatorInset = separatorInset;
-    }];
+- (void)touchAction:(UITapGestureRecognizer *)gesture{
+    if([gesture.view isKindOfClass:[YQItemCell class]]){
+        if(self.didClickBlock){
+            self.didClickBlock([(YQItemCell *)gesture.view index]);
+        }
+    }
 }
-
+- (YQItemCell *)cellAtIndex:(NSInteger)index{
+    NSAssert(index < self.itemArray.count, @"取YQItemCell越界了吧");
+    return self.itemArray[index];
+}
 /*
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
@@ -109,17 +123,6 @@
     CGContextStrokePath(context);
 }
 */
-#pragma mark selector
-- (void)touchAction:(UITapGestureRecognizer *)gesture{
-    if([gesture.view isKindOfClass:[YQItemCell class]]){
-        if(self.didClickBlock){
-            self.didClickBlock([(YQItemCell *)gesture.view index]);
-        }
-    }
-}
-- (YQItemCell *)cellAtIndex:(NSInteger)index{
-    NSAssert(index < self.itemArray.count, @"取YQItemCell越界了吧");
-    return self.itemArray[index];
-}
+
 
 @end

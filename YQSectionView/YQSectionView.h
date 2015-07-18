@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "YQItemCell.h"
-#import "YQItemCell.h"
 
 @interface YQSectionView : UIView
 - (instancetype)initWithItemCount:(NSInteger)count;
