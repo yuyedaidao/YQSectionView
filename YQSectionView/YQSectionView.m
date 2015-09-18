@@ -25,7 +25,7 @@
 - (instancetype)initWithItemCount:(NSInteger)count{
     self = [super init];
     if(self){
-        self.separatorInset = UIEdgeInsetsZero;
+        _separatorInset = UIEdgeInsetsZero;
         self.itemCount = count;
         [self awakeFromNib];
     }
@@ -96,6 +96,17 @@
 - (YQItemCell *)cellAtIndex:(NSInteger)index{
     NSAssert(index < self.itemArray.count, @"取YQItemCell越界了吧");
     return self.itemArray[index];
+}
+- (void)setSeparatorInset:(UIEdgeInsets)separatorInset{
+    if(UIEdgeInsetsEqualToEdgeInsets(separatorInset,_separatorInset)){
+        return;
+    }
+    _separatorInset = separatorInset;
+    [self.itemArray enumerateObjectsUsingBlock:^(YQItemCell *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.separatorInset = separatorInset;
+        [obj setNeedsDisplay];
+    }];
+    
 }
 /*
 // An empty implementation adversely affects performance during animation.

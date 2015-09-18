@@ -17,10 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    YQSectionView *section = [[YQSectionView alloc] initWithItemCount:5];
+    YQSectionView *section = [[YQSectionView alloc] initWithItemCount:10];
     [self.view addSubview:section];
-    section.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
-    section.frame = CGRectMake(0, 100, 200, 500);
+    
+    section.frame = self.view.bounds;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        section.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
+    });
     
 }
 
