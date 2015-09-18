@@ -46,7 +46,6 @@ static CGFloat AccessoryWidth = 6;
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-    NSLog(@"draw rect edage = %@",NSStringFromUIEdgeInsets(self.separatorInset));
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextBeginPath(context);
