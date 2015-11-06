@@ -18,7 +18,6 @@ static CGFloat AccessoryWidth = 6;
 @interface YQItemCell ()
 @property (nonatomic, assign) CGFloat lineWidth;
 @property (nonatomic, assign) YQItemCellType type;
-@property (nonatomic, assign) IBInspectable UIEdgeInsets separatorInset;
 @property (nonatomic, assign,getter=isOnly) IBInspectable BOOL only;
 @end
 
@@ -41,7 +40,7 @@ static CGFloat AccessoryWidth = 6;
     self.type = YQItemCellTypeLast;
     self.index = 0;
     self.lineWidth = SINGLE_LINE_WIDTH;
-    self.separatorInset = UIEdgeInsetsZero;
+    _separatorInset = UIEdgeInsetsZero;
     self.backgroundColor = [UIColor whiteColor];
 }
 // Only override drawRect: if you perform custom drawing.

@@ -23,4 +23,5 @@ typedef NS_ENUM(NSUInteger, YQItemCellType) {
  *  是否显示箭头
  */
 @property (nonatomic, assign) BOOL accessory;
+@property (nonatomic, assign) IBInspectable UIEdgeInsets separatorInset;
 @end
