@@ -12,7 +12,7 @@
 @interface YQSectionView ()
 
 //@property (nonatomic, strong) NSMutableArray *originYArray;
-@property (nonatomic, assign) NSInteger itemCount;
+
 
 @property (nonatomic, strong) NSMutableArray *itemArray;
 
@@ -25,16 +25,30 @@
 - (instancetype)initWithItemCount:(NSInteger)count{
     self = [super init];
     if(self){
+        self.equalWidth = YES;
         self.separatorInset = UIEdgeInsetsZero;
         self.itemCount = count;
-        [self awakeFromNib];
+        [self manualConfigureItems];
     }
     return self;
 }
-
+- (instancetype)initWithItemCount:(NSInteger)count equalWidth:(BOOL)equalWidth{
+    self = [super init];
+    if(self){
+        self.equalWidth = equalWidth;
+        self.itemCount = count;
+        if(!equalWidth){
+            NSLog(@"没有设置等宽，请务必调用- (void)manualConfigureItems 完成item的绘制");
+        }
+        self.separatorInset = UIEdgeInsetsZero;
+        
+    }
+    return self;
+}
 - (void)awakeFromNib{
-
-    //    self.originYArray = [NSMutableArray array];
+    [self manualConfigureItems];
+}
+- (void)manualConfigureItems{
     self.itemArray = [NSMutableArray arrayWithCapacity:self.itemCount];
     YQItemCell *cell = nil;
     if(self.itemCount == 1){
@@ -54,7 +68,6 @@
             }else{
                 cell = [[YQItemCell alloc] initWithIndex:i type:YQItemCellTypeMiddle separatorInset:self.separatorInset];
             }
-            
             
             [self.itemArray addObject:cell];
             [self addSubview:cell];
@@ -78,12 +91,21 @@
         }else {
             YQItemCell *oldObj = self.itemArray[idx-1];
             [self addConstraint:[NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:oldObj attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:oldObj attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
+            if(self.equalWidth){
+                [self addConstraint:[NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:oldObj attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
+            }
             if(idx == self.itemArray.count-1){
                 [self addConstraint:[NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
             }
         }
         
+    }];
+
+}
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    [self.itemArray enumerateObjectsUsingBlock:^(YQItemCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj setNeedsDisplay];
     }];
 }
 - (void)touchAction:(UITapGestureRecognizer *)gesture{
@@ -93,6 +115,7 @@
         }
     }
 }
+
 - (YQItemCell *)cellAtIndex:(NSInteger)index{
     NSAssert(index < self.itemArray.count, @"取YQItemCell越界了吧");
     return self.itemArray[index];
