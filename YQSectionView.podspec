@@ -16,11 +16,11 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YQSectionView"
-  s.version      = "1.4.2"
+  s.version      = "1.5.0"
   s.summary      = "仿真版UITableViewCell"
 
   s.description  = <<-DESC
-                   A longer description of YQSectionView in Markdown format.
+                   鲜肉，鲜肉，永远不皱，一直不臭.
 
                    * Think: Why did you write this? What is the focus? What does it do?
                    * CocoaPods will be using this to generate tags, and improve search results.
@@ -64,8 +64,8 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  #s.platform     = :ios
+  s.platform     = :ios, "6.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/yuyedaidao/YQSectionView.git", :tag => "1.4.2" }
+  s.source       = { :git => "https://github.com/yuyedaidao/YQSectionView.git", :tag => "1.5.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
