@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger, YQItemCellType) {
 - (instancetype)initWithIndex:(NSInteger)index type:(YQItemCellType)type separatorInset:(UIEdgeInsets)separatorInset isOnly:(BOOL)only;
 - (instancetype)initWithIndex:(NSInteger)index type:(YQItemCellType)type separatorInset:(UIEdgeInsets)separatorInset;
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, copy) void (^clickedBlock)(id sender);
 
 /**
  *  是否显示箭头

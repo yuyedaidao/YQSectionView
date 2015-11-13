@@ -51,14 +51,18 @@
 - (void)manualConfigureItems{
     self.itemArray = [NSMutableArray arrayWithCapacity:self.itemCount];
     YQItemCell *cell = nil;
+    __weak typeof(self) weakSelf = self;
     if(self.itemCount == 1){
         cell = [[YQItemCell alloc] initWithIndex:0 type:YQItemCellTypeFirst separatorInset:self.separatorInset isOnly:YES];
         
         [self addSubview:cell];
         [self.itemArray addObject:cell];
-        //加点击手势
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchAction:)];
-        [cell addGestureRecognizer:tap];
+        
+        [cell setClickedBlock:^(YQItemCell *sender) {
+            if(weakSelf.didClickBlock){
+                weakSelf.didClickBlock(sender.index);
+            }
+        }];
     }else{
         for (int i = 0; i < self.itemCount; i++) {
             if(i == 0){
@@ -72,9 +76,11 @@
             [self.itemArray addObject:cell];
             [self addSubview:cell];
             
-            //加点击手势
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchAction:)];
-            [cell addGestureRecognizer:tap];
+            [cell setClickedBlock:^(YQItemCell *sender) {
+                if(weakSelf.didClickBlock){
+                    weakSelf.didClickBlock(sender.index);
+                }
+            }];
         }
     }
     [self.itemArray enumerateObjectsUsingBlock:^(YQItemCell *obj, NSUInteger idx, BOOL *stop) {
@@ -107,13 +113,6 @@
     [self.itemArray enumerateObjectsUsingBlock:^(YQItemCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj setNeedsDisplay];
     }];
-}
-- (void)touchAction:(UITapGestureRecognizer *)gesture{
-    if([gesture.view isKindOfClass:[YQItemCell class]]){
-        if(self.didClickBlock){
-            self.didClickBlock([(YQItemCell *)gesture.view index]);
-        }
-    }
 }
 
 - (YQItemCell *)cellAtIndex:(NSInteger)index{

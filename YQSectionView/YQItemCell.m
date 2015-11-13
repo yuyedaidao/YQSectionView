@@ -32,7 +32,7 @@ static CGFloat AccessoryWidth = 6;
         _lineWidth = SINGLE_LINE_WIDTH;
         _only = only;
         _separatorInset = separatorInset;
-        self.backgroundColor = [UIColor whiteColor];
+        [self commonInit];
     }
     return self;
 }
@@ -41,7 +41,17 @@ static CGFloat AccessoryWidth = 6;
     self.index = 0;
     self.lineWidth = SINGLE_LINE_WIDTH;
     _separatorInset = UIEdgeInsetsZero;
-    self.backgroundColor = [UIColor whiteColor];
+    [self commonInit];
+}
+- (void)commonInit{
+    self.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self addGestureRecognizer:tap];
+}
+- (void)tapAction:(id)sender{
+    if(self.clickedBlock){
+        self.clickedBlock(self);
+    }
 }
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
