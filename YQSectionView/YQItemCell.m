@@ -17,7 +17,7 @@ static CGFloat AccessoryTrailing = 15;
 static CGFloat AccessoryWidth = 6;
 @interface YQItemCell ()
 @property (nonatomic, assign) CGFloat lineWidth;
-@property (nonatomic, assign,getter=isOnly) IBInspectable BOOL only;
+@property (nonatomic, assign,getter=isOnly) BOOL only;
 @property (nonatomic, assign) BOOL fromNib;
 @end
 
