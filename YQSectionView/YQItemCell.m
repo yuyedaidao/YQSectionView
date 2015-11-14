@@ -17,8 +17,8 @@ static CGFloat AccessoryTrailing = 15;
 static CGFloat AccessoryWidth = 6;
 @interface YQItemCell ()
 @property (nonatomic, assign) CGFloat lineWidth;
-@property (nonatomic, assign) YQItemCellType type;
 @property (nonatomic, assign,getter=isOnly) IBInspectable BOOL only;
+@property (nonatomic, assign) BOOL fromNib;
 @end
 
 @implementation YQItemCell
@@ -32,21 +32,20 @@ static CGFloat AccessoryWidth = 6;
         _lineWidth = SINGLE_LINE_WIDTH;
         _only = only;
         _separatorInset = separatorInset;
+        _lineColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1];
+        [self addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
         [self commonInit];
     }
     return self;
 }
 - (void)awakeFromNib{
-    self.type = YQItemCellTypeLast;
-    self.index = 0;
+    self.fromNib = YES;
     self.lineWidth = SINGLE_LINE_WIDTH;
-    _separatorInset = UIEdgeInsetsZero;
     [self commonInit];
 }
 - (void)commonInit{
     self.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self addGestureRecognizer:tap];
+    //暂无处理
 }
 - (void)tapAction:(id)sender{
     if(self.clickedBlock){
@@ -56,42 +55,56 @@ static CGFloat AccessoryWidth = 6;
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
+    
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextBeginPath(context);
-    [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1] setStroke];
-    CGFloat left = 0;
-    CGFloat right = 0;
-    CGFloat top = 0;
-    CGFloat bottom = 0;
+    [_lineColor setStroke];
+    if(self.fromNib){
     
-    if(self.type == YQItemCellTypeMiddle){
-        left = self.separatorInset.left;
-        right = self.separatorInset.right;
-    }else if(self.type == YQItemCellTypeFirst){
-        top = self.separatorInset.top;
-        bottom = self.separatorInset.bottom;//只有在第一个是最后一个的时候用到
+        if(self.topLine){
+            CGContextMoveToPoint(context, self.topLeftPadding, SINGLE_LINE_ADJUST_OFFSET);
+            CGContextAddLineToPoint(context, CGRectGetWidth(rect), SINGLE_LINE_ADJUST_OFFSET);
+        }
+        if(self.bottomLine){
+            CGContextMoveToPoint(context, self.bottomLeftPadding, CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET);
+            CGContextAddLineToPoint(context, CGRectGetWidth(rect), CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET);
+        }
+
     }else{
-        left = self.separatorInset.left;
-        bottom = self.separatorInset.bottom;
-    }
-    CGContextMoveToPoint(context, left, SINGLE_LINE_ADJUST_OFFSET+top);
-    CGContextAddLineToPoint(context, CGRectGetWidth(rect)-right, SINGLE_LINE_ADJUST_OFFSET+top);
-    if(self.type == YQItemCellTypeLast || self.isOnly){
-        CGContextMoveToPoint(context, 0, CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-bottom);
-        CGContextAddLineToPoint(context, CGRectGetWidth(rect), CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-bottom);
+        
+        CGFloat left = 0;
+        CGFloat right = 0;
+        CGFloat top = 0;
+        CGFloat bottom = 0;
+        
+        if(self.type == YQItemCellTypeMiddle){
+            left = self.separatorInset.left;
+            right = self.separatorInset.right;
+        }else if(self.type == YQItemCellTypeFirst){
+            top = self.separatorInset.top;
+            bottom = self.separatorInset.bottom;//只有在第一个是最后一个的时候用到
+        }else{
+            left = self.separatorInset.left;
+            bottom = self.separatorInset.bottom;
+        }
+        CGContextMoveToPoint(context, left, SINGLE_LINE_ADJUST_OFFSET+top);
+        CGContextAddLineToPoint(context, CGRectGetWidth(rect)-right, SINGLE_LINE_ADJUST_OFFSET+top);
+        if(self.type == YQItemCellTypeLast || self.isOnly){
+            CGContextMoveToPoint(context, 0, CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-bottom);
+            CGContextAddLineToPoint(context, CGRectGetWidth(rect), CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-bottom);
+        }
+        
     }
     CGContextSetLineWidth(context, self.lineWidth);
     CGContextStrokePath(context);
-    
     if(self.accessory){
         CGContextMoveToPoint(context, CGRectGetWidth(rect)-AccessoryTrailing-AccessoryWidth, CGRectGetHeight(rect)/2-AccessoryWidth);
         CGContextAddLineToPoint(context, CGRectGetWidth(rect)-AccessoryTrailing, CGRectGetHeight(rect)/2);
         CGContextAddLineToPoint(context, CGRectGetWidth(rect)-AccessoryTrailing-AccessoryWidth, CGRectGetHeight(rect)/2+AccessoryWidth);
         CGContextSetLineWidth(context, 2);
+        CGContextStrokePath(context);
     }
-    CGContextStrokePath(context);
-    
     
 }
 -(void)setAccessory:(BOOL)accessory{

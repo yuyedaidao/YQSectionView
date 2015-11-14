@@ -47,6 +47,9 @@
     
     
 }
+- (IBAction)clickAction:(YQItemCell *)sender {
+    NSLog(@"点我做甚");
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

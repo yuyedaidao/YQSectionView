@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YQSectionView"
-  s.version      = "1.5.0"
+  s.version      = "1.6.0"
   s.summary      = "仿真版UITableViewCell"
 
   s.description  = <<-DESC
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/yuyedaidao/YQSectionView.git", :tag => "1.5.0" }
+  s.source       = { :git => "https://github.com/yuyedaidao/YQSectionView.git", :tag => "1.6.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
