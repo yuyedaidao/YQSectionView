@@ -18,10 +18,13 @@ static CGFloat AccessoryWidth = 6;
 @interface YQItemCell ()
 @property (nonatomic, assign) CGFloat lineWidth;
 @property (nonatomic, assign,getter=isOnly) BOOL only;
-@property (nonatomic, assign) BOOL fromNib;
+//@property (nonatomic, assign) BOOL fromNib;
 @end
 
 @implementation YQItemCell
+- (instancetype)init {
+    return [self initWithIndex:0 type:YQItemCellTypeNormal separatorInset:UIEdgeInsetsZero isOnly:NO];
+}
 - (instancetype)initWithIndex:(NSInteger)index type:(YQItemCellType)type separatorInset:(UIEdgeInsets)separatorInset{
     return [self initWithIndex:index type:type separatorInset:separatorInset isOnly:NO];
 }
@@ -39,7 +42,7 @@ static CGFloat AccessoryWidth = 6;
     return self;
 }
 - (void)awakeFromNib{
-    self.fromNib = YES;
+//    self.fromNib = YES;
     self.lineWidth = SINGLE_LINE_WIDTH;
     [self commonInit];
 }
@@ -60,7 +63,7 @@ static CGFloat AccessoryWidth = 6;
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextBeginPath(context);
     [_lineColor setStroke];
-    if(self.fromNib){
+    if(self.type == YQItemCellTypeNormal){
     
         if(self.topLine){
             CGContextMoveToPoint(context, self.topLeftPadding, SINGLE_LINE_ADJUST_OFFSET);
@@ -115,6 +118,25 @@ static CGFloat AccessoryWidth = 6;
     }else{
         self.layoutMargins = UIEdgeInsetsZero;
     }
+    [self setNeedsDisplay];
+}
+
+- (void)setTopLeftPadding:(CGFloat)topLeftPadding {
+    _topLeftPadding = topLeftPadding;
+    [self setNeedsDisplay];
+}
+- (void)setBottomLeftPadding:(CGFloat)bottomLeftPadding {
+    _bottomLeftPadding = bottomLeftPadding;
+    [self setNeedsDisplay];
+}
+
+- (void)setTopLine:(BOOL)topLine {
+    _topLine = topLine;
+    [self setNeedsDisplay];
+}
+
+- (void)setBottomLine:(BOOL)bottomLine {
+    _bottomLine = bottomLine;
     [self setNeedsDisplay];
 }
 
