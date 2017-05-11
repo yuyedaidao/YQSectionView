@@ -46,6 +46,7 @@
     return self;
 }
 - (void)awakeFromNib{
+    [super awakeFromNib];
     [self manualConfigureItems];
 }
 - (void)manualConfigureItems{
