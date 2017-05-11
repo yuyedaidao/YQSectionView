@@ -15,19 +15,8 @@
 		21DD0C461B4B6D1100312470 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21DD0C3E1B4B6D1100312470 /* Info.plist */; };
 		21DD0C471B4B6D1100312470 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DD0C3F1B4B6D1100312470 /* main.m */; };
 		21DD0C481B4B6D1100312470 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DD0C411B4B6D1100312470 /* ViewController.m */; };
-		21DD0C521B4B6DC900312470 /* YQSectionViewDemo_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DD0C511B4B6DC900312470 /* YQSectionViewDemo_Tests.m */; };
 		21DD0C5A1B4B6E2100312470 /* YQItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DD0C591B4B6E2100312470 /* YQItemCell.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		21DD0C531B4B6DC900312470 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21D787AF1B4A1182005AC775 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 21D787B61B4A1182005AC775;
-			remoteInfo = YQSectionViewDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		21D787B71B4A1182005AC775 /* YQSectionViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YQSectionViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,7 +31,6 @@
 		21DD0C3F1B4B6D1100312470 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		21DD0C401B4B6D1100312470 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		21DD0C411B4B6D1100312470 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		21DD0C4D1B4B6DC900312470 /* YQSectionViewDemo Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "YQSectionViewDemo Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21DD0C501B4B6DC900312470 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21DD0C511B4B6DC900312470 /* YQSectionViewDemo_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQSectionViewDemo_Tests.m; sourceTree = "<group>"; };
 		21DD0C581B4B6E2100312470 /* YQItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQItemCell.h; sourceTree = "<group>"; };
@@ -51,13 +39,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		21D787B41B4A1182005AC775 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21DD0C4A1B4B6DC900312470 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -81,7 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				21D787B71B4A1182005AC775 /* YQSectionViewDemo.app */,
-				21DD0C4D1B4B6DC900312470 /* YQSectionViewDemo Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,24 +130,6 @@
 			productReference = 21D787B71B4A1182005AC775 /* YQSectionViewDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		21DD0C4C1B4B6DC900312470 /* YQSectionViewDemo Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21DD0C571B4B6DC900312470 /* Build configuration list for PBXNativeTarget "YQSectionViewDemo Tests" */;
-			buildPhases = (
-				21DD0C491B4B6DC900312470 /* Sources */,
-				21DD0C4A1B4B6DC900312470 /* Frameworks */,
-				21DD0C4B1B4B6DC900312470 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				21DD0C541B4B6DC900312470 /* PBXTargetDependency */,
-			);
-			name = "YQSectionViewDemo Tests";
-			productName = "YQSectionViewDemo Tests";
-			productReference = 21DD0C4D1B4B6DC900312470 /* YQSectionViewDemo Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -179,10 +141,7 @@
 				TargetAttributes = {
 					21D787B61B4A1182005AC775 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					21DD0C4C1B4B6DC900312470 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 21D787B61B4A1182005AC775;
+						DevelopmentTeam = UDA25TAW46;
 					};
 				};
 			};
@@ -200,7 +159,6 @@
 			projectRoot = "";
 			targets = (
 				21D787B61B4A1182005AC775 /* YQSectionViewDemo */,
-				21DD0C4C1B4B6DC900312470 /* YQSectionViewDemo Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -214,13 +172,6 @@
 				21DD0C451B4B6D1100312470 /* Images.xcassets in Resources */,
 				21DD0C431B4B6D1100312470 /* LaunchScreen.xib in Resources */,
 				21DD0C441B4B6D1100312470 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21DD0C4B1B4B6DC900312470 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,23 +190,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		21DD0C491B4B6DC900312470 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21DD0C521B4B6DC900312470 /* YQSectionViewDemo_Tests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		21DD0C541B4B6DC900312470 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 21D787B61B4A1182005AC775 /* YQSectionViewDemo */;
-			targetProxy = 21DD0C531B4B6DC900312470 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		21DD0C391B4B6D1100312470 /* LaunchScreen.xib */ = {
@@ -361,9 +296,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UDA25TAW46;
 				INFOPLIST_FILE = "$(SRCROOT)/YQSectionViewDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iqilu.YQSectionViewDemo;
 				PRODUCT_NAME = YQSectionViewDemo;
 			};
 			name = Debug;
@@ -372,44 +309,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UDA25TAW46;
 				INFOPLIST_FILE = "$(SRCROOT)/YQSectionViewDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iqilu.YQSectionViewDemo;
 				PRODUCT_NAME = YQSectionViewDemo;
-			};
-			name = Release;
-		};
-		21DD0C551B4B6DC900312470 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "YQSectionViewDemo Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YQSectionViewDemo.app/YQSectionViewDemo";
-			};
-			name = Debug;
-		};
-		21DD0C561B4B6DC900312470 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "YQSectionViewDemo Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YQSectionViewDemo.app/YQSectionViewDemo";
 			};
 			name = Release;
 		};
@@ -430,15 +335,6 @@
 			buildConfigurations = (
 				21D787DB1B4A1182005AC775 /* Debug */,
 				21D787DC1B4A1182005AC775 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21DD0C571B4B6DC900312470 /* Build configuration list for PBXNativeTarget "YQSectionViewDemo Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				21DD0C551B4B6DC900312470 /* Debug */,
-				21DD0C561B4B6DC900312470 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

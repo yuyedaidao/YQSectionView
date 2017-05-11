@@ -19,6 +19,7 @@ static CGFloat AccessoryWidth = 6;
 @property (nonatomic, assign) CGFloat lineWidth;
 @property (nonatomic, assign,getter=isOnly) BOOL only;
 @property (nonatomic, assign) BOOL fromNib;
+@property (nonatomic, strong) UIColor *originalColor;
 @end
 
 @implementation YQItemCell
@@ -39,8 +40,10 @@ static CGFloat AccessoryWidth = 6;
     return self;
 }
 - (void)awakeFromNib{
+    [super awakeFromNib];
     self.fromNib = YES;
     self.lineWidth = SINGLE_LINE_WIDTH;
+    self.highlightColor = [UIColor grayColor];
     [self commonInit];
 }
 - (void)commonInit{
@@ -52,6 +55,7 @@ static CGFloat AccessoryWidth = 6;
         self.clickedBlock(self);
     }
 }
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
@@ -116,6 +120,31 @@ static CGFloat AccessoryWidth = 6;
         self.layoutMargins = UIEdgeInsetsZero;
     }
     [self setNeedsDisplay];
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    if (_shouldHighlight) {
+        self.originalColor = self.backgroundColor;
+        self.backgroundColor = self.highlightColor;
+    }
+
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+    if (_shouldHighlight) {
+        self.backgroundColor = self.originalColor;
+    }
+    
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesCancelled:touches withEvent:event];
+    if (_shouldHighlight) {
+        self.backgroundColor = self.originalColor;
+    }
 }
 
 @end

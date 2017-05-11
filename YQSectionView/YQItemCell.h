@@ -33,5 +33,7 @@ typedef NS_ENUM(NSUInteger, YQItemCellType) {
 @property (nonatomic, assign) IBInspectable BOOL bottomLine;
 @property (nonatomic, assign) IBInspectable CGFloat topLeftPadding;
 @property (nonatomic, assign) IBInspectable CGFloat bottomLeftPadding;
+@property (nonatomic, strong) IBInspectable UIColor *highlightColor;
+@property (nonatomic, assign) IBInspectable BOOL shouldHighlight;
 
 @end
