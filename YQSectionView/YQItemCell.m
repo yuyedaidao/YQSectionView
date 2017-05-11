@@ -44,7 +44,6 @@ static CGFloat AccessoryWidth = 6;
     [super awakeFromNib];
     self.fromNib = YES;
     self.lineWidth = SINGLE_LINE_WIDTH;
-    self.highlightColor = [UIColor grayColor];
     [self commonInit];
 }
 - (void)commonInit{
