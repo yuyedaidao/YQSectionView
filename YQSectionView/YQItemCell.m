@@ -23,6 +23,10 @@ static CGFloat AccessoryWidth = 6;
 @end
 
 @implementation YQItemCell
+
+- (instancetype)init {
+    return [self initWithIndex:0 type:YQItemCellTypeFirst separatorInset:UIEdgeInsetsZero];
+}
 - (instancetype)initWithIndex:(NSInteger)index type:(YQItemCellType)type separatorInset:(UIEdgeInsets)separatorInset{
     return [self initWithIndex:index type:type separatorInset:separatorInset isOnly:NO];
 }
