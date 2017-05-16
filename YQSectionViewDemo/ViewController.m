@@ -45,6 +45,13 @@
         [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[redView]-0-|" options:0 metrics:nil views:@{@"redView":redView}]];
     }
     
+    YQItemCell *cell = [[YQItemCell alloc] init];
+    cell.bottomLine = NO;
+    cell.topLine = NO;
+    cell.frame = CGRectMake(0, 0, 360, 60);
+    cell.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:cell];
+    
     
 }
 - (IBAction)clickAction:(YQItemCell *)sender {

@@ -39,6 +39,8 @@ static CGFloat AccessoryWidth = 6;
         _separatorInset = separatorInset;
         _lineColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1];
         _highlightColor = _lineColor;
+        _topLine = YES;
+        _bottomLine = YES;
         [self addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
         [self commonInit];
     }

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YQSectionView"
-  s.version      = "1.7.4"
+  s.version      = "1.7.5"
   s.summary      = "仿真版UITableViewCell"
 
   s.description  = <<-DESC
