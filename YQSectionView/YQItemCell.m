@@ -96,11 +96,15 @@ static CGFloat AccessoryWidth = 6;
             left = self.separatorInset.left;
             bottom = self.separatorInset.bottom;
         }
-        CGContextMoveToPoint(context, left, SINGLE_LINE_ADJUST_OFFSET+top);
-        CGContextAddLineToPoint(context, CGRectGetWidth(rect)-right, SINGLE_LINE_ADJUST_OFFSET+top);
-        if(self.type == YQItemCellTypeLast || self.isOnly){
-            CGContextMoveToPoint(context, 0, CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-bottom);
-            CGContextAddLineToPoint(context, CGRectGetWidth(rect), CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-bottom);
+        if (self.topLine) {
+            CGContextMoveToPoint(context, left, SINGLE_LINE_ADJUST_OFFSET+top);
+            CGContextAddLineToPoint(context, CGRectGetWidth(rect)-right, SINGLE_LINE_ADJUST_OFFSET+top);
+        }
+        if (self.bottomLine) {
+            if(self.type == YQItemCellTypeLast || self.isOnly){
+                CGContextMoveToPoint(context, 0, CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-bottom);
+                CGContextAddLineToPoint(context, CGRectGetWidth(rect), CGRectGetHeight(rect)-SINGLE_LINE_ADJUST_OFFSET-bottom);
+            }
         }
         
     }
